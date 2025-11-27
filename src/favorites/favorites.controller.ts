@@ -7,6 +7,7 @@ import {
   BadRequestException,
   NotFoundException,
   UnprocessableEntityException,
+  HttpCode,
 } from '@nestjs/common';
 import { validate as uuidValidate } from 'uuid';
 import { FavoritesService } from './favorites.service';
@@ -21,6 +22,7 @@ export class FavoritesController {
   }
 
   @Post('track/:id')
+  @HttpCode(201)
   addTrack(@Param('id') id: string) {
     if (!uuidValidate(id)) throw new BadRequestException('Invalid id');
 
@@ -31,6 +33,7 @@ export class FavoritesController {
   }
 
   @Delete('track/:id')
+  @HttpCode(204)
   removeTrack(@Param('id') id: string) {
     if (!uuidValidate(id)) throw new BadRequestException('Invalid id');
 
@@ -41,6 +44,7 @@ export class FavoritesController {
   }
 
   @Post('album/:id')
+  @HttpCode(201)
   addAlbum(@Param('id') id: string) {
     if (!uuidValidate(id)) throw new BadRequestException('Invalid id');
 
@@ -51,6 +55,7 @@ export class FavoritesController {
   }
 
   @Delete('album/:id')
+  @HttpCode(204)
   removeAlbum(@Param('id') id: string) {
     if (!uuidValidate(id)) throw new BadRequestException('Invalid id');
 
@@ -61,6 +66,7 @@ export class FavoritesController {
   }
 
   @Post('artist/:id')
+  @HttpCode(201)
   addArtist(@Param('id') id: string) {
     if (!uuidValidate(id)) throw new BadRequestException('Invalid id');
 
@@ -71,6 +77,7 @@ export class FavoritesController {
   }
 
   @Delete('artist/:id')
+  @HttpCode(204)
   removeArtist(@Param('id') id: string) {
     if (!uuidValidate(id)) throw new BadRequestException('Invalid id');
 
