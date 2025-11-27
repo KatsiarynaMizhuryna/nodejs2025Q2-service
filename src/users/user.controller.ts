@@ -9,6 +9,7 @@ import {
   BadRequestException,
   NotFoundException,
   ForbiddenException,
+  HttpCode,
 } from '@nestjs/common';
 import { validate as uuidValidate } from 'uuid';
 import { UserService } from './user.service';
@@ -36,6 +37,7 @@ export class UserController {
   }
 
   @Post()
+  @HttpCode(201)
   create(@Body() dto: CreateUserDto) {
     return this.service.create(dto);
   }
@@ -54,6 +56,7 @@ export class UserController {
   }
 
   @Delete(':id')
+  @HttpCode(204)
   delete(@Param('id') id: string) {
     if (!uuidValidate(id)) throw new BadRequestException('Invalid id');
 
