@@ -8,6 +8,7 @@ import {
   Param,
   BadRequestException,
   NotFoundException,
+  HttpCode,
 } from '@nestjs/common';
 import { validate as uuidValidate } from 'uuid';
 import { ArtistService } from './artist.service';
@@ -33,6 +34,7 @@ export class ArtistController {
   }
 
   @Post()
+  @HttpCode(201)
   create(@Body() dto: CreateArtistDto) {
     return this.service.create(dto);
   }
@@ -48,6 +50,7 @@ export class ArtistController {
   }
 
   @Delete(':id')
+  @HttpCode(204)
   remove(@Param('id') id: string) {
     if (!uuidValidate(id)) throw new BadRequestException('Invalid id');
 
