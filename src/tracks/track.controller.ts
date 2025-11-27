@@ -8,6 +8,7 @@ import {
   Body,
   BadRequestException,
   NotFoundException,
+  HttpCode,
 } from '@nestjs/common';
 import { validate as uuidValidate } from 'uuid';
 import { TrackService } from './track.service';
@@ -33,6 +34,7 @@ export class TrackController {
   }
 
   @Post()
+  @HttpCode(201)
   create(@Body() dto: CreateTrackDto) {
     return this.service.create(dto);
   }
@@ -47,6 +49,7 @@ export class TrackController {
   }
 
   @Delete(':id')
+  @HttpCode(204)
   remove(@Param('id') id: string) {
     if (!uuidValidate(id)) throw new BadRequestException('Invalid id');
 
