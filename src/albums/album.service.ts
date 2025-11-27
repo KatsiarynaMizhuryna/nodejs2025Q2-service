@@ -3,10 +3,12 @@ import { Album } from './album.entity';
 import { CreateAlbumDto } from './dto/create-album.dto';
 import { UpdateAlbumDto } from './dto/update-album.dto';
 import { randomUUID } from 'crypto';
+import { TrackService } from 'src/tracks/track.service';
 
 @Injectable()
 export class AlbumService {
   private albums: Album[] = [];
+  constructor(private trackService: TrackService) {}
 
   create(dto: CreateAlbumDto) {
     const album: Album = {
@@ -41,6 +43,12 @@ export class AlbumService {
   delete(id: string) {
     const index = this.albums.findIndex((a) => a.id === id);
     if (index === -1) return false;
+
+    this.trackService.findAll().forEach((track) => {
+      if (track.albumId === id) {
+        track.albumId = null;
+      }
+    });
 
     this.albums.splice(index, 1);
     return true;
