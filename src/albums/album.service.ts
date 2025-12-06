@@ -1,56 +1,61 @@
 import { Injectable } from '@nestjs/common';
-import { Album } from './album.entity';
 import { CreateAlbumDto } from './dto/create-album.dto';
 import { UpdateAlbumDto } from './dto/update-album.dto';
-import { randomUUID } from 'crypto';
-import { TrackService } from 'src/tracks/track.service';
+import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class AlbumService {
-  private albums: Album[] = [];
-  constructor(private trackService: TrackService) {}
+  constructor(private prisma: PrismaService) {}
 
-  create(dto: CreateAlbumDto) {
-    const album: Album = {
-      id: randomUUID(),
-      name: dto.name,
-      year: dto.year,
-      artistId: dto.artistId ?? null,
-    };
-    this.albums.push(album);
-    return album;
+  async create(dto: CreateAlbumDto) {
+    return this.prisma.album.create({
+      data: {
+        name: dto.name,
+        year: dto.year,
+        artistId: dto.artistId ?? null,
+      },
+    });
   }
 
-  findAll() {
-    return this.albums;
+  async findAll() {
+    return this.prisma.album.findMany({
+      include: { tracks: true, artist: true },
+    });
   }
 
-  findOne(id: string) {
-    return this.albums.find((a) => a.id === id) || null;
+  async findOne(id: string) {
+    return this.prisma.album.findUnique({
+      where: { id },
+      include: { tracks: true, artist: true },
+    });
   }
 
-  update(id: string, dto: UpdateAlbumDto) {
-    const album = this.albums.find((a) => a.id === id);
-    if (!album) return null;
-
-    album.name = dto.name;
-    album.year = dto.year;
-    album.artistId = dto.artistId ?? null;
-
-    return album;
+  async update(id: string, dto: UpdateAlbumDto) {
+    try {
+      return await this.prisma.album.update({
+        where: { id },
+        data: {
+          name: dto.name,
+          year: dto.year,
+          artistId: dto.artistId ?? null,
+        },
+      });
+    } catch {
+      return null;
+    }
   }
 
-  delete(id: string) {
-    const index = this.albums.findIndex((a) => a.id === id);
-    if (index === -1) return false;
-
-    this.trackService.findAll().forEach((track) => {
-      if (track.albumId === id) {
-        track.albumId = null;
-      }
+  async delete(id: string) {
+    await this.prisma.track.updateMany({
+      where: { albumId: id },
+      data: { albumId: null },
     });
 
-    this.albums.splice(index, 1);
-    return true;
+    try {
+      await this.prisma.album.delete({ where: { id } });
+      return true;
+    } catch {
+      return false;
+    }
   }
 }

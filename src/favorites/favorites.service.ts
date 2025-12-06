@@ -1,73 +1,85 @@
 import { Injectable } from '@nestjs/common';
-import { Favorites } from './favorites.entity';
-import { TrackService } from 'src/tracks/track.service';
-import { ArtistService } from 'src/artists/artist.service';
-import { AlbumService } from 'src/albums/album.service';
+import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class FavoritesService {
-  private favs: Favorites = {
-    artists: [],
-    albums: [],
-    tracks: [],
-  };
+  constructor(private prisma: PrismaService) {}
 
-  constructor(
-    private trackService: TrackService,
-    private artistService: ArtistService,
-    private albumService: AlbumService,
-  ) {}
+  async getAll() {
+    const favs = await this.prisma.favorites.findUnique({ where: { id: 1 } });
 
-  getAll() {
-    return {
-      artists: this.favs.artists
-        .map((id) => this.artistService.findOne(id))
-        .filter((a) => a !== null),
-      albums: this.favs.albums
-        .map((id) => this.albumService.findOne(id))
-        .filter((a) => a !== null),
-      tracks: this.favs.tracks
-        .map((id) => this.trackService.findOne(id))
-        .filter((t) => t !== null),
-    };
+    if (!favs) {
+      return this.prisma.favorites.create({
+        data: { artists: [], albums: [], tracks: [] },
+      });
+    }
+
+    return favs;
   }
 
-  addTrack(id: string) {
-    const exists = this.trackService.findOne(id);
-    if (!exists) return 'NOT_FOUND';
-    this.favs.tracks.push(id);
+  async addTrack(id: string) {
+    const favs = await this.getAll();
+    if (favs.tracks.includes(id)) return favs;
+
+    return this.prisma.favorites.update({
+      where: { id: 1 },
+      data: { tracks: [...favs.tracks, id] },
+    });
   }
 
-  removeTrack(id: string) {
-    const index = this.favs.tracks.indexOf(id);
-    if (index === -1) return false;
-    this.favs.tracks.splice(index, 1);
+  async removeTrack(id: string) {
+    const favs = await this.getAll();
+    if (!favs.tracks.includes(id)) return false;
+
+    const updatedTracks = favs.tracks.filter((t) => t !== id);
+    await this.prisma.favorites.update({
+      where: { id: 1 },
+      data: { tracks: updatedTracks },
+    });
     return true;
   }
 
-  addAlbum(id: string) {
-    const exists = this.albumService.findOne(id);
-    if (!exists) return 'NOT_FOUND';
-    this.favs.albums.push(id);
+  async addAlbum(id: string) {
+    const favs = await this.getAll();
+    if (favs.albums.includes(id)) return favs;
+
+    return this.prisma.favorites.update({
+      where: { id: 1 },
+      data: { albums: [...favs.albums, id] },
+    });
   }
 
-  removeAlbum(id: string) {
-    const index = this.favs.albums.indexOf(id);
-    if (index === -1) return false;
-    this.favs.albums.splice(index, 1);
+  async removeAlbum(id: string) {
+    const favs = await this.getAll();
+    if (!favs.albums.includes(id)) return false;
+
+    const updatedAlbums = favs.albums.filter((a) => a !== id);
+    await this.prisma.favorites.update({
+      where: { id: 1 },
+      data: { albums: updatedAlbums },
+    });
     return true;
   }
 
-  addArtist(id: string) {
-    const exists = this.artistService.findOne(id);
-    if (!exists) return 'NOT_FOUND';
-    this.favs.artists.push(id);
+  async addArtist(id: string) {
+    const favs = await this.getAll();
+    if (favs.artists.includes(id)) return favs;
+
+    return this.prisma.favorites.update({
+      where: { id: 1 },
+      data: { artists: [...favs.artists, id] },
+    });
   }
 
-  removeArtist(id: string) {
-    const index = this.favs.artists.indexOf(id);
-    if (index === -1) return false;
-    this.favs.artists.splice(index, 1);
+  async removeArtist(id: string) {
+    const favs = await this.getAll();
+    if (!favs.artists.includes(id)) return false;
+
+    const updatedArtists = favs.artists.filter((a) => a !== id);
+    await this.prisma.favorites.update({
+      where: { id: 1 },
+      data: { artists: updatedArtists },
+    });
     return true;
   }
 }

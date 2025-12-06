@@ -21,32 +21,30 @@ export class UserController {
   constructor(private service: UserService) {}
 
   @Get()
-  findAll() {
-    return this.service.findAll();
+  async findAll() {
+    return await this.service.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    if (!uuidValidate(id)) {
-      throw new BadRequestException('Invalid id');
-    }
+  async findOne(@Param('id') id: string) {
+    if (!uuidValidate(id)) throw new BadRequestException('Invalid id');
 
-    const user = this.service.findOne(id);
+    const user = await this.service.findOne(id);
     if (!user) throw new NotFoundException();
     return user;
   }
 
   @Post()
   @HttpCode(201)
-  create(@Body() dto: CreateUserDto) {
-    return this.service.create(dto);
+  async create(@Body() dto: CreateUserDto) {
+    return await this.service.create(dto);
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() dto: UpdatePasswordDto) {
+  async update(@Param('id') id: string, @Body() dto: UpdatePasswordDto) {
     if (!uuidValidate(id)) throw new BadRequestException('Invalid id');
 
-    const result = this.service.update(id, dto);
+    const result = await this.service.updatePassword(id, dto);
 
     if (result === null) throw new NotFoundException();
     if (result === 'WRONG_PASSWORD')
@@ -57,10 +55,10 @@ export class UserController {
 
   @Delete(':id')
   @HttpCode(204)
-  delete(@Param('id') id: string) {
+  async delete(@Param('id') id: string) {
     if (!uuidValidate(id)) throw new BadRequestException('Invalid id');
 
-    const ok = this.service.delete(id);
+    const ok = await this.service.delete(id);
     if (!ok) throw new NotFoundException();
     return;
   }

@@ -1,68 +1,70 @@
 import { Injectable } from '@nestjs/common';
-import { SafeUser, User } from './user.entity';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdatePasswordDto } from './dto/update-password.dto';
-import { randomUUID } from 'crypto';
+import { PrismaService } from 'src/prisma/prisma.service';
+import { SafeUser, User } from './user.entity';
 
 @Injectable()
 export class UserService {
-  private users: User[] = [];
+  constructor(private prisma: PrismaService) {}
 
   private toSafeUser(user: User): SafeUser {
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const { password, ...safeUser } = user;
-    if (password) {
-      return safeUser;
-    }
     return safeUser;
   }
 
-  create(dto: CreateUserDto): SafeUser {
-    const now = Date.now();
-    const user: User = {
-      id: randomUUID(),
-      login: dto.login,
-      password: dto.password,
-      version: 1,
-      createdAt: now,
-      updatedAt: now,
-    };
+  async create(dto: CreateUserDto): Promise<SafeUser> {
+    const user = await this.prisma.user.create({
+      data: {
+        login: dto.login,
+        password: dto.password,
+        version: 1,
+      },
+    });
 
-    this.users.push(user);
     return this.toSafeUser(user);
   }
 
-  findAll(): SafeUser[] {
-    return this.users.map((user) => this.toSafeUser(user));
+  async findAll(): Promise<SafeUser[]> {
+    const users = await this.prisma.user.findMany();
+    return users.map((u) => this.toSafeUser(u));
   }
 
-  findOne(id: string): SafeUser | null {
-    const user = this.users.find((u) => u.id === id);
+  async findOne(id: string): Promise<SafeUser | null> {
+    const user = await this.prisma.user.findUnique({ where: { id } });
     if (!user) return null;
     return this.toSafeUser(user);
   }
 
-  update(
+  async updatePassword(
     id: string,
     dto: UpdatePasswordDto,
-  ): SafeUser | 'WRONG_PASSWORD' | null {
-    const user = this.users.find((u) => u.id === id);
+  ): Promise<SafeUser | 'WRONG_PASSWORD' | null> {
+    const user = await this.prisma.user.findUnique({ where: { id } });
     if (!user) return null;
 
-    if (dto.oldPassword !== user.password) {
+    if (user.password !== dto.oldPassword) {
       return 'WRONG_PASSWORD';
     }
 
-    user.password = dto.newPassword;
-    user.updatedAt = Date.now();
-    user.version += 1;
+    const updatedUser = await this.prisma.user.update({
+      where: { id },
+      data: {
+        password: dto.newPassword,
+        version: user.version + 1,
+      },
+    });
 
-    return this.toSafeUser(user);
+    return this.toSafeUser(updatedUser);
   }
 
-  delete(id: string): boolean {
-    const index = this.users.findIndex((u) => u.id === id);
-    if (index === -1) return false;
-    this.users.splice(index, 1);
-    return true;
+  async delete(id: string): Promise<boolean> {
+    try {
+      await this.prisma.user.delete({ where: { id } });
+      return true;
+    } catch {
+      return false;
+    }
   }
 }

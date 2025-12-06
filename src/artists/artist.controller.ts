@@ -20,30 +20,30 @@ export class ArtistController {
   constructor(private service: ArtistService) {}
 
   @Get()
-  findAll() {
-    return this.service.findAll();
+  async findAll() {
+    return await this.service.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  async findOne(@Param('id') id: string) {
     if (!uuidValidate(id)) throw new BadRequestException('Invalid id');
 
-    const artist = this.service.findOne(id);
+    const artist = await this.service.findOne(id);
     if (!artist) throw new NotFoundException();
     return artist;
   }
 
   @Post()
   @HttpCode(201)
-  create(@Body() dto: CreateArtistDto) {
-    return this.service.create(dto);
+  async create(@Body() dto: CreateArtistDto) {
+    return await this.service.create(dto);
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() dto: UpdateArtistDto) {
+  async update(@Param('id') id: string, @Body() dto: UpdateArtistDto) {
     if (!uuidValidate(id)) throw new BadRequestException('Invalid id');
 
-    const updated = this.service.update(id, dto);
+    const updated = await this.service.update(id, dto);
     if (!updated) throw new NotFoundException();
 
     return updated;
@@ -51,10 +51,10 @@ export class ArtistController {
 
   @Delete(':id')
   @HttpCode(204)
-  remove(@Param('id') id: string) {
+  async remove(@Param('id') id: string) {
     if (!uuidValidate(id)) throw new BadRequestException('Invalid id');
 
-    const ok = this.service.delete(id);
+    const ok = await this.service.delete(id);
     if (!ok) throw new NotFoundException();
 
     return;

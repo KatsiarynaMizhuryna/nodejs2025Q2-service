@@ -1,50 +1,58 @@
 import { Injectable } from '@nestjs/common';
-import { Track } from './track.entity';
 import { CreateTrackDto } from './dto/create-track.dto';
 import { UpdateTrackDto } from './dto/update-track.dto';
-import { randomUUID } from 'crypto';
+import { PrismaService } from 'src/prisma/prisma.service';
 
 @Injectable()
 export class TrackService {
-  private tracks: Track[] = [];
+  constructor(private prisma: PrismaService) {}
 
-  create(dto: CreateTrackDto) {
-    const track: Track = {
-      id: randomUUID(),
-      name: dto.name,
-      artistId: dto.artistId ?? null,
-      albumId: dto.albumId ?? null,
-      duration: dto.duration,
-    };
-    this.tracks.push(track);
-    return track;
+  async create(dto: CreateTrackDto) {
+    return this.prisma.track.create({
+      data: {
+        name: dto.name,
+        artistId: dto.artistId ?? null,
+        albumId: dto.albumId ?? null,
+        duration: dto.duration,
+      },
+    });
   }
 
-  findAll() {
-    return this.tracks;
+  async findAll() {
+    return this.prisma.track.findMany({
+      include: { artist: true, album: true },
+    });
   }
 
-  findOne(id: string) {
-    return this.tracks.find((t) => t.id === id) || null;
+  async findOne(id: string) {
+    return this.prisma.track.findUnique({
+      where: { id },
+      include: { artist: true, album: true },
+    });
   }
 
-  update(id: string, dto: UpdateTrackDto) {
-    const track = this.tracks.find((t) => t.id === id);
-    if (!track) return null;
-
-    track.name = dto.name;
-    track.artistId = dto.artistId ?? null;
-    track.albumId = dto.albumId ?? null;
-    track.duration = dto.duration;
-
-    return track;
+  async update(id: string, dto: UpdateTrackDto) {
+    try {
+      return await this.prisma.track.update({
+        where: { id },
+        data: {
+          name: dto.name,
+          artistId: dto.artistId ?? null,
+          albumId: dto.albumId ?? null,
+          duration: dto.duration,
+        },
+      });
+    } catch {
+      return null;
+    }
   }
 
-  delete(id: string) {
-    const index = this.tracks.findIndex((t) => t.id === id);
-    if (index === -1) return false;
-
-    this.tracks.splice(index, 1);
-    return true;
+  async delete(id: string) {
+    try {
+      await this.prisma.track.delete({ where: { id } });
+      return true;
+    } catch {
+      return false;
+    }
   }
 }

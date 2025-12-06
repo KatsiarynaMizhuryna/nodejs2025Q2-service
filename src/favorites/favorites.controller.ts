@@ -6,7 +6,6 @@ import {
   Param,
   BadRequestException,
   NotFoundException,
-  UnprocessableEntityException,
   HttpCode,
 } from '@nestjs/common';
 import { validate as uuidValidate } from 'uuid';
@@ -17,27 +16,26 @@ export class FavoritesController {
   constructor(private service: FavoritesService) {}
 
   @Get()
-  getAll() {
+  async getAll() {
     return this.service.getAll();
   }
 
   @Post('track/:id')
   @HttpCode(201)
-  addTrack(@Param('id') id: string) {
+  async addTrack(@Param('id') id: string) {
     if (!uuidValidate(id)) throw new BadRequestException('Invalid id');
 
-    const result = this.service.addTrack(id);
-    if (result === 'NOT_FOUND') throw new UnprocessableEntityException();
+    await this.service.addTrack(id);
 
     return { message: 'Added' };
   }
 
   @Delete('track/:id')
   @HttpCode(204)
-  removeTrack(@Param('id') id: string) {
+  async removeTrack(@Param('id') id: string) {
     if (!uuidValidate(id)) throw new BadRequestException('Invalid id');
 
-    const ok = this.service.removeTrack(id);
+    const ok = await this.service.removeTrack(id);
     if (!ok) throw new NotFoundException();
 
     return;
@@ -45,21 +43,20 @@ export class FavoritesController {
 
   @Post('album/:id')
   @HttpCode(201)
-  addAlbum(@Param('id') id: string) {
+  async addAlbum(@Param('id') id: string) {
     if (!uuidValidate(id)) throw new BadRequestException('Invalid id');
 
-    const result = this.service.addAlbum(id);
-    if (result === 'NOT_FOUND') throw new UnprocessableEntityException();
+    await this.service.addAlbum(id);
 
     return { message: 'Added' };
   }
 
   @Delete('album/:id')
   @HttpCode(204)
-  removeAlbum(@Param('id') id: string) {
+  async removeAlbum(@Param('id') id: string) {
     if (!uuidValidate(id)) throw new BadRequestException('Invalid id');
 
-    const ok = this.service.removeAlbum(id);
+    const ok = await this.service.removeAlbum(id);
     if (!ok) throw new NotFoundException();
 
     return;
@@ -67,21 +64,20 @@ export class FavoritesController {
 
   @Post('artist/:id')
   @HttpCode(201)
-  addArtist(@Param('id') id: string) {
+  async addArtist(@Param('id') id: string) {
     if (!uuidValidate(id)) throw new BadRequestException('Invalid id');
 
-    const result = this.service.addArtist(id);
-    if (result === 'NOT_FOUND') throw new UnprocessableEntityException();
+    await this.service.addArtist(id);
 
     return { message: 'Added' };
   }
 
   @Delete('artist/:id')
   @HttpCode(204)
-  removeArtist(@Param('id') id: string) {
+  async removeArtist(@Param('id') id: string) {
     if (!uuidValidate(id)) throw new BadRequestException('Invalid id');
 
-    const ok = this.service.removeArtist(id);
+    const ok = await this.service.removeArtist(id);
     if (!ok) throw new NotFoundException();
 
     return;
