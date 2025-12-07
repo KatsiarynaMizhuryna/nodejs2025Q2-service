@@ -6,60 +6,45 @@ import {
   Delete,
   Body,
   Param,
-  BadRequestException,
-  NotFoundException,
-  ForbiddenException,
   HttpCode,
+  HttpStatus,
+  ParseUUIDPipe,
 } from '@nestjs/common';
-import { validate as uuidValidate } from 'uuid';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdatePasswordDto } from './dto/update-password.dto';
 
 @Controller('user')
 export class UserController {
-  constructor(private service: UserService) {}
+  constructor(private readonly userService: UserService) {}
 
   @Get()
   async findAll() {
-    return await this.service.findAll();
+    return this.userService.findAll();
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: string) {
-    if (!uuidValidate(id)) throw new BadRequestException('Invalid id');
-
-    const user = await this.service.findOne(id);
-    if (!user) throw new NotFoundException();
-    return user;
+  async findOne(@Param('id', ParseUUIDPipe) id: string) {
+    return this.userService.findOne(id);
   }
 
   @Post()
-  @HttpCode(201)
+  @HttpCode(HttpStatus.CREATED)
   async create(@Body() dto: CreateUserDto) {
-    return await this.service.create(dto);
+    return this.userService.create(dto);
   }
 
   @Put(':id')
-  async update(@Param('id') id: string, @Body() dto: UpdatePasswordDto) {
-    if (!uuidValidate(id)) throw new BadRequestException('Invalid id');
-
-    const result = await this.service.updatePassword(id, dto);
-
-    if (result === null) throw new NotFoundException();
-    if (result === 'WRONG_PASSWORD')
-      throw new ForbiddenException('Wrong password');
-
-    return result;
+  async updatePassword(
+    @Param('id', ParseUUIDPipe) id: string,
+    @Body() dto: UpdatePasswordDto,
+  ) {
+    return this.userService.updatePassword(id, dto);
   }
 
   @Delete(':id')
-  @HttpCode(204)
-  async delete(@Param('id') id: string) {
-    if (!uuidValidate(id)) throw new BadRequestException('Invalid id');
-
-    const ok = await this.service.delete(id);
-    if (!ok) throw new NotFoundException();
-    return;
+  @HttpCode(HttpStatus.NO_CONTENT)
+  async delete(@Param('id', ParseUUIDPipe) id: string) {
+    await this.userService.delete(id);
   }
 }

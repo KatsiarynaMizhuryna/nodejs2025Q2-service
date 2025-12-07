@@ -3,8 +3,11 @@ export interface User {
   login: string;
   password: string;
   version: number;
-  createdAt?: Date;
-  updatedAt?: Date;
+  createdAt: bigint;
+  updatedAt: bigint;
 }
 
-export type SafeUser = Omit<User, 'password'>;
+export type SafeUser = Omit<User, 'password' | 'createdAt' | 'updatedAt'> & {
+  createdAt: number;
+  updatedAt: number;
+};
