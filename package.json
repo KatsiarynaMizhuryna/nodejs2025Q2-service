@@ -12,6 +12,7 @@
     "prebuild": "rimraf dist",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+    "scan:vulnerabilities": "npm audit --audit-level=moderate",
     "start": "nest start",
     "start:hot-reload": "ts-node-dev --respawn --transpile-only --poll src/main.ts",
     "start:dev": "nest start --watch",
