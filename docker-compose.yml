@@ -1,0 +1,49 @@
+services:
+  postgres_db:
+    build:
+      context: .
+      dockerfile: Dockerfile.postgres
+    image: postgres:16-alpine
+    container_name: postgres_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - '${POSTGRES_PORT}:${POSTGRES_PORT}'
+    networks:
+      - prisma-network
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U postgres -d postgres']
+      interval: 5s
+      timeout: 2s
+      retries: 20
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: nest_server
+    restart: unless-stopped
+    ports:
+      - '${PORT}:${PORT}'
+    env_file:
+      - .env
+    depends_on:
+      postgres_db:
+        condition: service_healthy
+    volumes:
+      - ./src:/app/src
+      - ./prisma:/app/prisma
+      - ./node_modules:/app/node_modules
+    networks:
+      - prisma-network
+
+networks:
+  prisma-network:
+
+volumes:
+  db-data:
