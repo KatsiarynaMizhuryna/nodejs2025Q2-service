@@ -39,6 +39,7 @@ services:
       - ./src:/app/src
       - ./prisma:/app/prisma
       - ./node_modules:/app/node_modules
+      - ./logs:/app/logs
     networks:
       - prisma-network
 
