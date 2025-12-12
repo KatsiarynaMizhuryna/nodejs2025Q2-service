@@ -42,6 +42,7 @@ export type UserMinAggregateOutputType = {
   id: string | null;
   login: string | null;
   password: string | null;
+  refreshTokenHash: string | null;
   version: number | null;
   createdAt: bigint | null;
   updatedAt: bigint | null;
@@ -51,6 +52,7 @@ export type UserMaxAggregateOutputType = {
   id: string | null;
   login: string | null;
   password: string | null;
+  refreshTokenHash: string | null;
   version: number | null;
   createdAt: bigint | null;
   updatedAt: bigint | null;
@@ -60,6 +62,7 @@ export type UserCountAggregateOutputType = {
   id: number;
   login: number;
   password: number;
+  refreshTokenHash: number;
   version: number;
   createdAt: number;
   updatedAt: number;
@@ -82,6 +85,7 @@ export type UserMinAggregateInputType = {
   id?: true;
   login?: true;
   password?: true;
+  refreshTokenHash?: true;
   version?: true;
   createdAt?: true;
   updatedAt?: true;
@@ -91,6 +95,7 @@ export type UserMaxAggregateInputType = {
   id?: true;
   login?: true;
   password?: true;
+  refreshTokenHash?: true;
   version?: true;
   createdAt?: true;
   updatedAt?: true;
@@ -100,6 +105,7 @@ export type UserCountAggregateInputType = {
   id?: true;
   login?: true;
   password?: true;
+  refreshTokenHash?: true;
   version?: true;
   createdAt?: true;
   updatedAt?: true;
@@ -203,6 +209,7 @@ export type UserGroupByOutputType = {
   id: string;
   login: string;
   password: string;
+  refreshTokenHash: string | null;
   version: number;
   createdAt: bigint;
   updatedAt: bigint;
@@ -232,6 +239,7 @@ export type UserWhereInput = {
   id?: Prisma.StringFilter<'User'> | string;
   login?: Prisma.StringFilter<'User'> | string;
   password?: Prisma.StringFilter<'User'> | string;
+  refreshTokenHash?: Prisma.StringNullableFilter<'User'> | string | null;
   version?: Prisma.IntFilter<'User'> | number;
   createdAt?: Prisma.BigIntFilter<'User'> | bigint | number;
   updatedAt?: Prisma.BigIntFilter<'User'> | bigint | number;
@@ -241,6 +249,7 @@ export type UserOrderByWithRelationInput = {
   id?: Prisma.SortOrder;
   login?: Prisma.SortOrder;
   password?: Prisma.SortOrder;
+  refreshTokenHash?: Prisma.SortOrderInput | Prisma.SortOrder;
   version?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
@@ -254,6 +263,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<
     OR?: Prisma.UserWhereInput[];
     NOT?: Prisma.UserWhereInput | Prisma.UserWhereInput[];
     password?: Prisma.StringFilter<'User'> | string;
+    refreshTokenHash?: Prisma.StringNullableFilter<'User'> | string | null;
     version?: Prisma.IntFilter<'User'> | number;
     createdAt?: Prisma.BigIntFilter<'User'> | bigint | number;
     updatedAt?: Prisma.BigIntFilter<'User'> | bigint | number;
@@ -265,6 +275,7 @@ export type UserOrderByWithAggregationInput = {
   id?: Prisma.SortOrder;
   login?: Prisma.SortOrder;
   password?: Prisma.SortOrder;
+  refreshTokenHash?: Prisma.SortOrderInput | Prisma.SortOrder;
   version?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
@@ -286,6 +297,10 @@ export type UserScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<'User'> | string;
   login?: Prisma.StringWithAggregatesFilter<'User'> | string;
   password?: Prisma.StringWithAggregatesFilter<'User'> | string;
+  refreshTokenHash?:
+    | Prisma.StringNullableWithAggregatesFilter<'User'>
+    | string
+    | null;
   version?: Prisma.IntWithAggregatesFilter<'User'> | number;
   createdAt?: Prisma.BigIntWithAggregatesFilter<'User'> | bigint | number;
   updatedAt?: Prisma.BigIntWithAggregatesFilter<'User'> | bigint | number;
@@ -295,6 +310,7 @@ export type UserCreateInput = {
   id?: string;
   login: string;
   password: string;
+  refreshTokenHash?: string | null;
   version: number;
   createdAt: bigint | number;
   updatedAt: bigint | number;
@@ -304,6 +320,7 @@ export type UserUncheckedCreateInput = {
   id?: string;
   login: string;
   password: string;
+  refreshTokenHash?: string | null;
   version: number;
   createdAt: bigint | number;
   updatedAt: bigint | number;
@@ -313,6 +330,10 @@ export type UserUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   login?: Prisma.StringFieldUpdateOperationsInput | string;
   password?: Prisma.StringFieldUpdateOperationsInput | string;
+  refreshTokenHash?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
   version?: Prisma.IntFieldUpdateOperationsInput | number;
   createdAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number;
   updatedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number;
@@ -322,6 +343,10 @@ export type UserUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   login?: Prisma.StringFieldUpdateOperationsInput | string;
   password?: Prisma.StringFieldUpdateOperationsInput | string;
+  refreshTokenHash?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
   version?: Prisma.IntFieldUpdateOperationsInput | number;
   createdAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number;
   updatedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number;
@@ -331,6 +356,7 @@ export type UserCreateManyInput = {
   id?: string;
   login: string;
   password: string;
+  refreshTokenHash?: string | null;
   version: number;
   createdAt: bigint | number;
   updatedAt: bigint | number;
@@ -340,6 +366,10 @@ export type UserUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   login?: Prisma.StringFieldUpdateOperationsInput | string;
   password?: Prisma.StringFieldUpdateOperationsInput | string;
+  refreshTokenHash?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
   version?: Prisma.IntFieldUpdateOperationsInput | number;
   createdAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number;
   updatedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number;
@@ -349,6 +379,10 @@ export type UserUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string;
   login?: Prisma.StringFieldUpdateOperationsInput | string;
   password?: Prisma.StringFieldUpdateOperationsInput | string;
+  refreshTokenHash?:
+    | Prisma.NullableStringFieldUpdateOperationsInput
+    | string
+    | null;
   version?: Prisma.IntFieldUpdateOperationsInput | number;
   createdAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number;
   updatedAt?: Prisma.BigIntFieldUpdateOperationsInput | bigint | number;
@@ -358,6 +392,7 @@ export type UserCountOrderByAggregateInput = {
   id?: Prisma.SortOrder;
   login?: Prisma.SortOrder;
   password?: Prisma.SortOrder;
+  refreshTokenHash?: Prisma.SortOrder;
   version?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
@@ -373,6 +408,7 @@ export type UserMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder;
   login?: Prisma.SortOrder;
   password?: Prisma.SortOrder;
+  refreshTokenHash?: Prisma.SortOrder;
   version?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
@@ -382,6 +418,7 @@ export type UserMinOrderByAggregateInput = {
   id?: Prisma.SortOrder;
   login?: Prisma.SortOrder;
   password?: Prisma.SortOrder;
+  refreshTokenHash?: Prisma.SortOrder;
   version?: Prisma.SortOrder;
   createdAt?: Prisma.SortOrder;
   updatedAt?: Prisma.SortOrder;
@@ -395,6 +432,10 @@ export type UserSumOrderByAggregateInput = {
 
 export type StringFieldUpdateOperationsInput = {
   set?: string;
+};
+
+export type NullableStringFieldUpdateOperationsInput = {
+  set?: string | null;
 };
 
 export type IntFieldUpdateOperationsInput = {
@@ -421,6 +462,7 @@ export type UserSelect<
     id?: boolean;
     login?: boolean;
     password?: boolean;
+    refreshTokenHash?: boolean;
     version?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
@@ -436,6 +478,7 @@ export type UserSelectCreateManyAndReturn<
     id?: boolean;
     login?: boolean;
     password?: boolean;
+    refreshTokenHash?: boolean;
     version?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
@@ -451,6 +494,7 @@ export type UserSelectUpdateManyAndReturn<
     id?: boolean;
     login?: boolean;
     password?: boolean;
+    refreshTokenHash?: boolean;
     version?: boolean;
     createdAt?: boolean;
     updatedAt?: boolean;
@@ -462,6 +506,7 @@ export type UserSelectScalar = {
   id?: boolean;
   login?: boolean;
   password?: boolean;
+  refreshTokenHash?: boolean;
   version?: boolean;
   createdAt?: boolean;
   updatedAt?: boolean;
@@ -471,7 +516,13 @@ export type UserOmit<
   ExtArgs extends
     runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs,
 > = runtime.Types.Extensions.GetOmit<
-  'id' | 'login' | 'password' | 'version' | 'createdAt' | 'updatedAt',
+  | 'id'
+  | 'login'
+  | 'password'
+  | 'refreshTokenHash'
+  | 'version'
+  | 'createdAt'
+  | 'updatedAt',
   ExtArgs['result']['user']
 >;
 
@@ -486,6 +537,7 @@ export type $UserPayload<
       id: string;
       login: string;
       password: string;
+      refreshTokenHash: string | null;
       version: number;
       createdAt: bigint;
       updatedAt: bigint;
@@ -1084,6 +1136,7 @@ export interface UserFieldRefs {
   readonly id: Prisma.FieldRef<'User', 'String'>;
   readonly login: Prisma.FieldRef<'User', 'String'>;
   readonly password: Prisma.FieldRef<'User', 'String'>;
+  readonly refreshTokenHash: Prisma.FieldRef<'User', 'String'>;
   readonly version: Prisma.FieldRef<'User', 'Int'>;
   readonly createdAt: Prisma.FieldRef<'User', 'BigInt'>;
   readonly updatedAt: Prisma.FieldRef<'User', 'BigInt'>;
