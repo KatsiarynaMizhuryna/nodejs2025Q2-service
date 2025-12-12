@@ -2,6 +2,7 @@ export interface User {
   id: string;
   login: string;
   password: string;
+  refreshTokenHash?: string | null;
   version: number;
   createdAt: bigint;
   updatedAt: bigint;
