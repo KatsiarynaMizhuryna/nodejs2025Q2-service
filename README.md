@@ -17,6 +17,57 @@ git clone {repository URL}
 npm install
 ```
 
+## Create .env file
+
+```
+POSTGRES_DB=postgres
+POSTGRES_USER=postgres
+POSTGRES_PASSWORD=postgres
+POSTGRES_PORT=5432
+PORT=4000
+```
+
+## Docker Hub
+
+**Image Repository**: [schneeeisblume8/home-library-service](https://hub.docker.com/r/schneeeisblume8/home-library-service)
+
+### Pull Image
+
+```
+docker pull schneeeisblume8/home-library-service:latest
+docker run -p 4000:4000 schneeeisblume8/home-library-service:latest
+```
+
+## Start containers using Docker Compose
+
+```
+docker-compose up -d --build
+```
+
+## To stop containers
+
+```
+docker-compose down
+```
+
+## Generate Prisma Client
+
+```
+docker-compose exec server npx prisma generate
+```
+
+## Apply migrations
+
+```
+docker-compose exec server npx prisma migrate dev --name init
+```
+
+## Running application via Docker
+
+```
+docker-compose logs -f server
+```
+
 ## Running application
 
 ```
